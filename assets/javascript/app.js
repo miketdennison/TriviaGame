@@ -3,8 +3,10 @@
 // Basic Variables
 var intervalId;
 var clockRunning = false;
-var time = 5;
+var time = 10;
 var questionNumber = 0;
+var correctAnswers = 0;
+const totalNumOfQuestions = 4;
 
 // Question objects, and initialization of an array that contains all the questions
 var question_1 = {
@@ -13,17 +15,17 @@ var question_1 = {
     correctAnswer: "106 days"
 }
 var question_2 = {
-    question: "How many times larger is Jupiter than the Earth?",
+    question: "How many times (x) larger is Jupiter than the Earth?",
     possibleAnswers: ["500x", "2100x", "5200x", "1300x"],
     correctAnswer: "1300x"
 }
 var question_3 = {
     question: "How many degrees (F) is Venus?",
-    possibleAnswers: ["864F", "772F", "1023F", "424F"],
+    possibleAnswers: ["864F", "77 2F", "1023F", "424F"],
     correctAnswer: "864F"
 }
 var question_4 = {
-    question: "How many billion light-years is the known universe?",
+    question: "How many billion light-years (B) is the known universe?",
     possibleAnswers: ["4B", "46B", "23B", "92B"],
     correctAnswer: "46B"
 }
@@ -31,11 +33,24 @@ var questions = [question_1, question_2, question_3, question_4];
 
 /* Timer Functions*/
 
+// Audio for launch button
+playLaunch = function () {
+    var audio = new Audio("assets/sounds/launch.mp3");
+    audio.loop = false;
+    audio.play();
+}
+
 // When user clicks start, initialize timer, then wait 1 second before displaying question
 $("#start-button").on("click", function () {
-    startTimer();
+    playLaunch();
+    clockRunning = false;
+    questionNumber = 0;
+    correctAnswers = 0;
     $("#start-button").hide();
-    setTimeout(nextQuestion, 1000);
+    $("#time-left").text("Time Left: " + time);
+    startTimer();
+    nextQuestion();
+    $(".answer").show();
 });
 
 function startTimer() {
@@ -51,7 +66,8 @@ function count() {
         $("#time-left").text("Time Left: " + time);
     } else {
         stopTimer();
-        //endRound();
+        // triggers end of round if time runs out
+        verifyAnswer((false)); 
     }
 }
 
@@ -64,11 +80,15 @@ function stopTimer() {
 
 // Get the next question from the array, and update the respective HTML
 function nextQuestion() {
+    if (questionNumber === totalNumOfQuestions) {
+        endGame();
+    }
+    $("#win-loss").text("");
     $("#question-text").text(questions[questionNumber].question);
+    // Display all possible answers
     for (var i = 0; i < questions[questionNumber].possibleAnswers.length; i++) {
         $("#answer-" + i).text(questions[questionNumber].possibleAnswers[i]);
     }
-    $("#question-text").text(questions[questionNumber].question);
     questionNumber++;
 }
 
@@ -85,10 +105,57 @@ function verifyAnswer(a) {
         if (questions[questionNumber - 1].possibleAnswers[i] !== questions[questionNumber - 1].correctAnswer)
             $("#answer-" + i).text(" ");
     }
+
+    // if correct, show user
     if (a == questions[questionNumber - 1].correctAnswer) {
-        console.log("winner!")
+        $("#win-loss").removeClass("red").addClass("green");
+        $("#win-loss").html("&#x1f44d; Awwww, yeah! Correct!");
+        correctAnswers++;
+    // if wrong, show user
+    } else if (a !== false) {
+        $("#win-loss").removeClass("green").addClass("red");
+        $("#win-loss").html("&#x1f44e; Nah, that's wrong!");
+    // if time ran out, show user
     } else {
-        console.log("loser!")
+        $("#win-loss").removeClass("green").addClass("red");
+        $("#win-loss").html("&#x231b; Out of time!");
     }
-    setTimeout(nextQuestion, 500);
+
+    // stop timer to pause until next round
+    stopTimer();
+
+    // Set up new timer, and display it for next question
+    time = 10;
+    $("#time-left").text("Time Left: " + time);
+
+    // Allow user to see correct answer
+    setTimeout(startTimer, 1000 * 3);
+    setTimeout(nextQuestion, 1000 * 3);
+}
+
+/* End Game Logic */
+
+playProblem = function () {
+    var audio = new Audio("assets/sounds/problem.mp3");
+    audio.loop = false;
+    audio.play();
+}
+
+playSmall = function () {
+    var audio = new Audio("assets/sounds/smallstep.mp3");
+    audio.loop = false;
+    audio.play();
+}
+
+function endGame() {
+    // Reset HTML and display number of correct answers
+    stopTimer();
+    if(correctAnswers < 3) {
+        playProblem();
+    }
+    $("#win-loss").text("");
+    $("#question-text").text("Answers Correct: " + correctAnswers + " of " + totalNumOfQuestions);
+    $("#time-left").text("");
+    $(".answer").hide();
+    $("#start-button").show();
 }

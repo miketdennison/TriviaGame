@@ -7,13 +7,22 @@ body {
 }
 
 header {
+    color: white;
     font-family: 'Codystar',
         cursive;
-    color: white;
     text-align: center;
     font-weight: 900;
 }
 
+hr {
+    display: block;
+    border-top: dashed white .05rem;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    width: 65%;
+    text-align: center;
+}
 .container {
     display: grid;
     background: black;
@@ -24,6 +33,14 @@ header {
 
 .main-content {
     color: white;
+}
+
+#time-left {
+    color: #007bff;
+}
+
+#question-text {
+    color: yellow;
 }
 
 #start-button {
@@ -44,7 +61,25 @@ header {
 }
 
 .answer:hover {
-    background: skyblue;
+    background: #007bff;
     color: black;
     cursor: pointer;
+}
+
+.red {
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
+.green {
+    background-color: green;
+    color: white;
+    text-align: center;
+}
+
+.black {
+    background-color: black;
+    color: white;
+    text-align: center;
 }
