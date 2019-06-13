@@ -26,6 +26,17 @@ header {
     color: white;
 }
 
+#start-button {
+       font-family: 'Press Start 2P',
+       cursive;
+       font-size: 2rem;
+       font-weight: bold;
+}
+
+#start-text {
+    padding-left:1rem;
+}
+
 .answer {
     padding: 0;
     margin: 0;
@@ -34,5 +45,6 @@ header {
 
 .answer:hover {
     background: skyblue;
+    color: black;
     cursor: pointer;
 }
