@@ -1,0 +1,38 @@
+/*Space Background*/
+body {
+    background: url("../images/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+header {
+    font-family: 'Codystar',
+        cursive;
+    color: white;
+    text-align: center;
+    font-weight: 900;
+}
+
+.container {
+    display: grid;
+    background: black;
+    opacity: 0.8;
+    min-height: 500px;
+    min-width: 500px;
+}
+
+.main-content {
+    color: white;
+}
+
+.answer {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.answer:hover {
+    background: skyblue;
+    cursor: pointer;
+}

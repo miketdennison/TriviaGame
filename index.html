@@ -5,16 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Outta This World Trivia!</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css?family=Codystar&display=swap" rel="stylesheet">
+    <title>Outta-This-World Trivia</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
-    
-    <script src="assets/javascript/app.js"></script>
+    <div class="container mt-4 p-4">
+        <header>
+            <h1>Outta<span class="text-primary">-This-</span>World <br /><span class="text-primary">Trivia</span></h1>
+        </header>
+        <div class="row main-content">
+            <div class="col-12 text-center">
+                <p id="time-left">&nbsp;</p>
+            </div>
+        </div>
+        <div class="row main-content">
+            <div class="col-12 text-center">
+                <p id="question-text">&nbsp;</p>
+            </div>
+        </div>
+        <div class="row main-content">
+            <div class="col-3">
+                <p class="answer"><span id="answer-0"></span></p>
+            </div>
+            <div class="col-3">
+                <p class="answer"><span id="answer-1"></span></p>
+            </div>
+            <div class="col-3">
+                <p class="answer"><span id="answer-2"></span></p>
+            </div>
+            <div class="col-3">
+                <p class="answer"><span id="answer-3"></span></p>
+            </div>
+        </div>
+        <button id="start-button" type="button" class="btn btn-primary btn-block">Start</button>
+    </div>
+
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
@@ -22,7 +54,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    
+    <script src="assets/javascript/app.js"></script>
+
 </body>
 
 </html>
