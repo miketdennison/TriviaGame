@@ -21,7 +21,7 @@ var question_2 = {
 }
 var question_3 = {
     question: "How many degrees (F) is Venus?",
-    possibleAnswers: ["864F", "77 2F", "1023F", "424F"],
+    possibleAnswers: ["864F", "772F", "1023F", "424F"],
     correctAnswer: "864F"
 }
 var question_4 = {
@@ -95,7 +95,9 @@ function nextQuestion() {
 // When user clicks question, get the text and verify it
 $(".answer").on("click", function () {
     var answer = $(this).text();
-    verifyAnswer(answer);
+    if(clockRunning) {
+        verifyAnswer(answer);
+    }
 });
 
 // Check whether user was right or wrong
