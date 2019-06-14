@@ -154,6 +154,8 @@ function endGame() {
     stopTimer();
     if(correctAnswers < 3) {
         playProblem();
+    } else {
+        playSmall();
     }
     $("#win-loss").text("");
     $("#question-text").text("Answers Correct: " + correctAnswers + " of " + totalNumOfQuestions);
