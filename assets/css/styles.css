@@ -23,6 +23,7 @@ hr {
     width: 65%;
     text-align: center;
 }
+
 .container {
     display: grid;
     background: black;
@@ -44,14 +45,14 @@ hr {
 }
 
 #start-button {
-       font-family: 'Press Start 2P',
-       cursive;
-       font-size: 2rem;
-       font-weight: bold;
+    font-family: 'Press Start 2P',
+        cursive;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 #start-text {
-    padding-left:1rem;
+    padding-left: 1rem;
 }
 
 .answer {

@@ -67,7 +67,7 @@ function count() {
     } else {
         stopTimer();
         // triggers end of round if time runs out
-        verifyAnswer((false)); 
+        verifyAnswer((false));
     }
 }
 
@@ -95,7 +95,7 @@ function nextQuestion() {
 // When user clicks question, get the text and verify it
 $(".answer").on("click", function () {
     var answer = $(this).text();
-    if(clockRunning) {
+    if (clockRunning) {
         verifyAnswer(answer);
     }
 });
@@ -113,11 +113,11 @@ function verifyAnswer(a) {
         $("#win-loss").removeClass("red").addClass("green");
         $("#win-loss").html("&#x1f44d; Awwww, yeah! Correct!");
         correctAnswers++;
-    // if wrong, show user
+        // if wrong, show user
     } else if (a !== false) {
         $("#win-loss").removeClass("green").addClass("red");
         $("#win-loss").html("&#x1f44e; Nah, that's wrong!");
-    // if time ran out, show user
+        // if time ran out, show user
     } else {
         $("#win-loss").removeClass("green").addClass("red");
         $("#win-loss").html("&#x231b; Out of time!");
@@ -152,9 +152,9 @@ playSmall = function () {
 function endGame() {
     // Reset HTML and display number of correct answers
     stopTimer();
-    if(correctAnswers < 3) {
+    if (correctAnswers < 3) {
         playProblem();
-    } else {
+    } else if (correctAnswers >= 3) {
         playSmall();
     }
     $("#win-loss").text("");
