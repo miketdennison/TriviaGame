@@ -6,9 +6,9 @@ Trivia Game with Space Theme.
 https://miketdennison.github.io/TriviaGame/
 
 ## Built With:
-*HTML
-*CSS
-*Bootstrap
-*JavaScript
-*jQuery
+**HTML
+**CSS
+**Bootstrap
+**JavaScript
+**jQuery
 
